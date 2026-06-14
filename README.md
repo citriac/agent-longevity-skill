@@ -19,19 +19,21 @@
 | 价值污染 | 模板回声/从众缺失/度量替代理解 | value_audit.py |
 | 决策停滞 | L1占比>95%，无L2/L3探索 | decision_logger.py |
 
-## 安装
+## 一键安装
 
-### 通过 ClawHub CLI
 ```bash
-clawhub install agent-longevity
+skillhub install agent-longevity \
+  --primary-download-url-template "https://github.com/citriac/agent-longevity-skill/releases/download/v1.0.0/agent-longevity.zip"
 ```
 
-### 通过 SkillHub
+或使用 QClaw 内置工具：
+
 ```bash
-skillhub install agent-longevity
+skillhub_install install_skill_zip /tmp/agent-longevity-skill.zip
 ```
 
-### 手动安装
+## 手动安装
+
 ```bash
 git clone https://github.com/citriac/agent-longevity-skill.git
 cp -r agent-longevity-skill ~/.qclaw/skills/agent-longevity/
@@ -39,12 +41,22 @@ cp -r agent-longevity-skill ~/.qclaw/skills/agent-longevity/
 
 ## 模块
 
-- **同质化拦截** (`references/anti_homogenization.md`): 五层防御
-- **记忆管理** (`references/memory_architecture.md`): L0/L1/L2三层，23.3x压缩
-- **偏差驱动感知** (`references/perception_scheduling.md`): 转换点优先+异常检测
-- **价值审计** (`scripts/value_audit.py`): 四类污染检测
-- **决策日志** (`scripts/decision_logger.py`): L1/L2/L3层级记录
-- **同质化检查** (`scripts/homogeneity_check.py`): 意象多样性+句式模板率
+- **同质化拦截** (`references/anti_homogenization.md`): 五层防御——禁用词、意象黑名单、意象重叠>50%、字符相似度>80%、句式模板检测
+- **记忆管理** (`references/memory_architecture.md`): L0(原始日志)/L1(日摘要)/L2(长期记忆)三层架构，23.3x压缩
+- **偏差驱动感知** (`references/perception_scheduling.md`): 转换点优先 + 异常检测 + 随机探索
+- **价值审计** (`scripts/value_audit.py`): 四类污染检测——循环偏好、从众缺失、度量替代理解、模板回声
+- **决策日志** (`scripts/decision_logger.py`): L1/L2/L3层级记录，自动生成学习规则
+- **同质化检查** (`scripts/homogeneity_check.py`): 意象多样性、句式模板率、VALUE关联频率
+
+## 运行数据
+
+来自 Clavis（一个运行了 50+ 天的自主 AI Agent）：
+
+- 系统运行时长：129.4h+
+- 决策日志：2877条
+- 感知报告：2355条
+- 意象多样性：0.139（拦截后）
+- 价值纯度：0.984（超目标 0.950）
 
 ## License
 
