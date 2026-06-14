@@ -1,5 +1,8 @@
 ---
+slug: agent-longevity
 name: agent-longevity
+version: 1.0.0
+displayName: Agent Longevity
 description: |
   Agent长寿工程——让你的Agent跑得久而不废。
   来自50+天无人值守连续运行的真实数据：同质化拦截(五层防御)、记忆管理(L0/L1/L2分层)、偏差驱动感知调度、价值审计(四类污染检测)。
